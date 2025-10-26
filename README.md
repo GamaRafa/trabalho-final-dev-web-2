@@ -18,28 +18,24 @@ Esse projeto de uma loja fictícia de games vintage foi desenvolvido como trabal
 | email | VARCHAR | E-mail |
 | senha | VARCHAR | Senha (hash) |
 | endereco | VARCHAR | Endereco para entrega |
-
+| data_cadastro | DATETIME | Data da criação do usuário |
 **Relacionamentos:**
 - 1 usuário -> N pedidos
 
-**Notas:**
-Talvez incluir uma coluna relacionada a adesão de termos usando DATETIME.
-
-### produtos
+### jogos
 
 | Campo | Tipo | Descrição |
 | -------- | ------- | -------- |
-| id | INT (PK) | Identificador do produto |
-| tipo | VARCHAR | Tipo do produto. Jogo ou console |
-| nome | VARCHAR | Nome do produto |
-| plataforma | VARCHAR | Ex.: GameBoy, SNES |
-| preco | DECIMAL | Preço do produto |
+| id | INT (PK) | Identificador do jogo |
+| nome | VARCHAR | Nome do jogo |
+| descricao | TEXT | Descrição opcional |
+| plataforma | VARCHAR | Ex.: "GameBoy", "SNES" |
+| preco | DECIMAL | Preço do jogo |
 | estoque | INT | Quantidade disponível |
 | imagem | VARCHAR | Caminho/URL da imagem |
-| descrição | TEXT | Descrição opcional |
 
 **Relacionamentos:**
-- 1 produto -> N itens de pedido
+- 1 jogo - N itens de pedido
 
 ### pedidos
 
@@ -61,17 +57,34 @@ Talvez incluir uma coluna relacionada a adesão de termos usando DATETIME.
 | -------- | ------- | -------- |
 | id | INT (PK) | Identificador do item |
 | id_pedido | INT (FK) | Referência a `pedidos` |
-| id_produto | INT (FK) | Referência a `produtos` |
+| id_jogo | INT (FK) | Referência a `jogos` |
 | quantidade | INT | Quantidade comprada |
-| preco_unitario | DECIMAL | Valor do produto |
+| preco_unitario | DECIMAL | Valor do jogo |
 
 **Relacionamentos:**
 - N itens -> 1 pedido
-- N itens -> 1 produto
+- N itens -> 1 jogo
 
 
 ## Como rodar localmente
 
 ### Requisitos
 
-### Instalação
+- Docker
+- Docker Compose
+
+### Passos para execução
+
+1. Clone o repositório
+`git clone https://github.com/GamaRafa/trabalho-final-dev-web-2.git`
+ou
+`git clone git@github.com:GamaRafa/trabalho-final-dev-web-2.git`
+
+2. Suba os containers
+`docker-compose up -d`
+
+3. Acesse o projeto no navegador
+`http://localhost:8080`
+
+4. Popular o banco de dados
+`docker exec -i mysql_db mysql -uuser -ppass mydb < ./scripts/init.sql`
