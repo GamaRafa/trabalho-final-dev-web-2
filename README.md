@@ -87,4 +87,4 @@ ou
 `http://localhost:8080`
 
 4. Popular o banco de dados
-`docker exec -i mysql_db mysql -uuser -ppass mydb < ./scripts/init.sql`
+`docker exec -i mysql_db mysql -uuser -ppass soprando_cartucho < ./src/scripts/init.sql`

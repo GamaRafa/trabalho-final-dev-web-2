@@ -15,7 +15,7 @@ services:
     container_name: mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: soprando_cartucho
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     ports:
