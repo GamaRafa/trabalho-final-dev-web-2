@@ -1,5 +1,10 @@
+SET NAMES utf8mb4;
+
 -- Criação do banco
-CREATE DATABASE IF NOT EXISTS soprando_cartucho;
+CREATE DATABASE IF NOT EXISTS soprando_cartucho
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+  
 USE soprando_cartucho;
 
 -- Tabela de usuários
