@@ -81,10 +81,17 @@ ou
 `git clone git@github.com:GamaRafa/trabalho-final-dev-web-2.git`
 
 2. Suba os containers
-`docker-compose up -d`
+`docker compose up -d`
 
 3. Acesse o projeto no navegador
 `http://localhost:8080`
 
 4. Popular o banco de dados
 `docker exec -i mysql_db mysql -uuser -ppass soprando_cartucho < ./src/scripts/init.sql`
+- Obs.: para acessar o banco de dados do container: `docker exec -it mysql_db mysql -u user -p`
+
+5. Para derrubar os containers sem apagar os dados do banco
+`docker compose down`
+
+6. Para derrubar os containers **apagando** os dados do banco
+`docker compose down -v`
