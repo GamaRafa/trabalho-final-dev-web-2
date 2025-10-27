@@ -1,5 +1,5 @@
 <?php
-require_once '../core/conexao.php';
+require_once __DIR__ . '../core/conexao.php';
 
 $mensagemErro = "";
 

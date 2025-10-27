@@ -19,6 +19,7 @@ Esse projeto de uma loja fictícia de games vintage foi desenvolvido como trabal
 | senha | VARCHAR | Senha (hash) |
 | endereco | VARCHAR | Endereco para entrega |
 | data_cadastro | DATETIME | Data da criação do usuário |
+
 **Relacionamentos:**
 - 1 usuário -> N pedidos
 
