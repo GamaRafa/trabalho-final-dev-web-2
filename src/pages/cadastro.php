@@ -1,0 +1,74 @@
+<?php
+require_once '../core/autoload.php';
+
+$mensagem = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  extract($_POST);
+  $usuario = new Usuario();
+  $usuario->setNome(trim($nome));
+  $usuario->setEmail(trim($email));
+  $usuario->setSenha(password_hash($senha, PASSWORD_DEFAULT));
+  $usuario->setEndereco(trim($endereco));
+
+  if ($usuario->inserir() == true) {
+    $mensagem = 'Usuário criado com sucesso';
+  } else {
+    $mensagem = "Problema ao cadastrar usuário";
+  }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soprando o Cartucho - Cadastro</title>
+</head>
+<body>
+  <h1>Cadastro de Usuário</h1>
+  <form method="post" onSubmit="return validarSenhas()">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="senha">Senha:</label>
+    <input type="password" name="senha" id="senha" required minlength="6">
+
+    <label for="confirmar">Confirmar senha:</label>
+    <input type="password" name="confirmar" id="confirmar" required>
+
+    <label for="endereco">Endereço</label>
+    <input type="text" name="endereco" required>
+
+    <label>
+      <input type="checkbox" name="termos">
+      Aceito os <a href="#">Termos de Uso</a>
+    </label>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <script>
+    function validarSenhas() {
+      const senha = document.getElementById('senha').value;
+      const confirmar = document.getElementById('confirmar').value;
+
+      if (senha !== confirmar) {
+        alert('As senhas não coincidem!');
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+  <div>
+    <p><?= $mensagem ?></p>
+  </div>
+</body>
+</html>
+
+<!-- essa tela ainda tem problemas a resolver, revisar DataAccess -->

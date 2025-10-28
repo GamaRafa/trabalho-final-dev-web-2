@@ -1,5 +1,5 @@
 <?php
-require_once '../core/conexao.php';
+require_once __DIR__ . '/../core/conexao.php';
 
 function getJogos() {
   $pdo = conexao();
@@ -9,7 +9,6 @@ function getJogos() {
 }
 
 $jogos = getJogos();
-// nome, descricao, plataforma, preco, estoque, imagem
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +16,18 @@ $jogos = getJogos();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <title>Test</title>
 </head>
 <body>
   <ul>
     <?php foreach ($jogos as $jogo): ?>
     <li>
-      <strong><?= $jogo["nome"] ?></strong>
+      <a href="jogoDetalhe.php?id=<?= urldecode($jogo['id']) ?>">
+        <strong><?= $jogo["nome"] ?></strong>
+      </a>
       <p><?= $jogo["descricao"] ?></p>
       <p><?= $jogo["plataforma"] ?></p>
       <p><?= $jogo["preco"] ?></p>

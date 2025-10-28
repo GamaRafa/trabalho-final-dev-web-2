@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../core/conexao.php';
+require_once __DIR__ . '/../core/conexao.php';
 
 class Usuario {
   use DataAccess;

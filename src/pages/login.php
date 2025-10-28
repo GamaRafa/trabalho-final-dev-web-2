@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../core/conexao.php';
+require_once __DIR__ . '/../core/conexao.php';
 
 $mensagemErro = "";
 
@@ -20,7 +20,7 @@ if (isset($_POST["email"])) {
   if ($usuario && $usuario["senha"] == $senhaInformada) {
     session_start();
     $_SESSION['usuarioLogado'] = $usuario;
-    header("Location: test.php");
+    header("Location: jogos.php");
   } else {
     $mensagemErro = "E-mail ou senha incorretos";
   }
@@ -33,6 +33,9 @@ if (isset($_POST["email"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <title>Soprando o cartucho - Login</title>
 </head>
 <body>

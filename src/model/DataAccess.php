@@ -19,3 +19,5 @@ trait DataAccess {
     }
   }
 }
+
+// precisa de revisão. Métodos mágicos não estão funcionando

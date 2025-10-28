@@ -1,11 +1,14 @@
-# Cartucho Empoeirado
+# Soprando o Cartucho
 
 Esse projeto de uma loja fictícia de games vintage foi desenvolvido como trabalho final da disciplina Desenvolvimento Web II.
 
 
 ## Funcionalidades
-
-## Estrutura do projeto
+1. Login
+2. Cadastro
+3. Listagem de jogos
+4. Detalhes do jogo
+5. Carrinho de compras
 
 ## Tabelas e relacionamentos
 
