@@ -39,24 +39,26 @@ if (isset($_POST["email"])) {
   <title>Soprando o cartucho - Login</title>
 </head>
 <body>
+  <div class="page-content">
+    <h1>Soprando o Cartucho - Login</h1>
+    <form method="post">
+      <label for="usuario">E-mail:</label>
+      <input type="text" name="email" required>
+      <br>
+      <label for="senha">Senha:</label>
+      <input type="password" name="senha" required>
+      <br>
+      <button type="submit">Login</button>
+    </form>
 
-  <h1>Soprando o Cartucho - Login</h1>
-  <form method="post">
-    <label for="usuario">E-mail:</label>
-    <input type="text" name="email" required>
-    <br>
-    <label for="senha">Senha:</label>
-    <input type="password" name="senha" required>
-    <br>
-    <button type="submit">Login</button>
-  </form>
+    <?php if(!empty($mensagemErro)): ?>
+    <div>
+      <p class="error"><?= $mensagemErro ?></p>
+    </div>
+    <?php endif ; ?>
 
-  <?php if(!empty($mensagemErro)): ?>
-  <div>
-    <p class="error"><?= $mensagemErro ?></p>
+    <img src="../assets/imgs/old-video-game-cartoon_9044-81.jpg" alt="Foto1" id="imgLogin">
   </div>
-  <?php endif ; ?>
-
-  <img src="../assets/imgs/old-video-game-cartoon_9044-81.jpg" alt="Foto1" id="imgLogin">
+  <?php include_once __DIR__ . '/footer.php' ?>
 </body>
 </html>

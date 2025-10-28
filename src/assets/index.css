@@ -54,7 +54,7 @@ form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
   display: block;
-  width: 100%;
+  width: -webkit-fill-available;
   margin: 0.5rem 0 1rem 0;
   padding: 0.5rem;
   border: 2px solid var(--purple);
@@ -149,10 +149,12 @@ body::after {
 
 #imgLogin {
   margin: 2rem auto;
-  width: 500px;
+  width: 350px;
   height: auto;
   display: block;
 }
+
+/* FOOTER */
 
 .footer {
   width: 100%;
@@ -183,6 +185,53 @@ body::after {
   font-size: 0.7rem; /* fonte menor para footer */
   margin: 0;
 }
+
+/* HEADER */
+
+.header {
+  color: var(--dark);
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 0 var(--purple);
+  font-family: 'Press Start 2P', monospace;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header-logo {
+  width: 60px;
+  height: auto;
+}
+
+.header-nav a {
+  color: var(--yellow);
+  text-decoration: none;
+  margin: 0 0.8rem;
+  font-size: 0.7rem;
+  transition: color 0.2s, transform 0.2s
+}
+
+.header-nav a:hover {
+  color: var(--green);
+  transform: scale(1.05);
+}
+
+.logout-link {
+  color: var(--red) !important;
+}
+
+.header-dividr {
+  border: none;
+  border-top: 2px solid var(--blue);
+  margin: 0.5rem 0 0;
+}
+
+/* MSG ERRO */
 
 .error {
   color: var(--red);

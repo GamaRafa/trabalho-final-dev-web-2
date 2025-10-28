@@ -19,9 +19,10 @@ $jogos = getJogos();
   <link rel="stylesheet" href="../assets/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <title>Test</title>
+  <title>Soprando o Cartucho</title>
 </head>
 <body>
+  <?php include_once 'header.php' ?>
   <div class="page-content">
     <ul>
       <?php foreach ($jogos as $jogo): ?>
