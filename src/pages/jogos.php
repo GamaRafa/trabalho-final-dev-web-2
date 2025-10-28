@@ -22,18 +22,21 @@ $jogos = getJogos();
   <title>Test</title>
 </head>
 <body>
-  <ul>
-    <?php foreach ($jogos as $jogo): ?>
-    <li>
-      <a href="jogoDetalhe.php?id=<?= urldecode($jogo['id']) ?>">
-        <strong><?= $jogo["nome"] ?></strong>
-      </a>
-      <p><?= $jogo["descricao"] ?></p>
-      <p><?= $jogo["plataforma"] ?></p>
-      <p><?= $jogo["preco"] ?></p>
-      <p><?= $jogo["estoque"] ?></p>
-    </li>
-    <?php endforeach ; ?>
-  </ul>
+  <div class="page-content">
+    <ul>
+      <?php foreach ($jogos as $jogo): ?>
+        <li>
+          <a href="jogoDetalhe.php?id=<?= urldecode($jogo['id']) ?>">
+            <strong><?= $jogo["nome"] ?></strong>
+          </a>
+          <p><?= $jogo["descricao"] ?></p>
+          <p><?= $jogo["plataforma"] ?></p>
+          <p><?= $jogo["preco"] ?></p>
+          <p><?= $jogo["estoque"] ?></p>
+        </li>
+      <?php endforeach ; ?>
+    </ul>
+  </div>
+  <?php include_once 'footer.php' ?>
 </body>
 </html>

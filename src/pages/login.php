@@ -39,11 +39,8 @@ if (isset($_POST["email"])) {
   <title>Soprando o cartucho - Login</title>
 </head>
 <body>
-  <?php if(!empty($mensagemErro)): ?>
-  <div>
-    <p><?= $mensagemErro ?></p>
-  </div>
-  <?php endif ; ?>
+
+  <h1>Soprando o Cartucho - Login</h1>
   <form method="post">
     <label for="usuario">E-mail:</label>
     <input type="text" name="email" required>
@@ -53,5 +50,13 @@ if (isset($_POST["email"])) {
     <br>
     <button type="submit">Login</button>
   </form>
+
+  <?php if(!empty($mensagemErro)): ?>
+  <div>
+    <p class="error"><?= $mensagemErro ?></p>
+  </div>
+  <?php endif ; ?>
+
+  <img src="../assets/imgs/old-video-game-cartoon_9044-81.jpg" alt="Foto1" id="imgLogin">
 </body>
 </html>

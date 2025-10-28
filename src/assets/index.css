@@ -6,6 +6,9 @@
    - Dandelion Yellow (#FFD166)
    - Dark Gray (#2E2E2E)
    - Light Gray (#F1F1F1)
+
+   A identidade tá bonita, mas os textos estão grandes demais
+   E vai ser preciso abrir espaço pra header e footer
 */
 
 :root {
@@ -27,6 +30,13 @@ body {
   padding: 0;
   min-height: 100vh;
   background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
 }
 
 form {
@@ -57,7 +67,7 @@ form button {
 }
 
 h1, h2, h3 {
-  color: var(--yellow);
+  color: var(--green);
   text-align: center;
   text-shadow: 2px 2px var(--dark);
   margin-top: 1rem;
@@ -135,4 +145,47 @@ body::after {
     transparent 2px
   );
   opacity: 0.25;
+}
+
+#imgLogin {
+  margin: 2rem auto;
+  width: 500px;
+  height: auto;
+  display: block;
+}
+
+.footer {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.footer-hr {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* espaço entre imagem e texto */
+}
+
+.footer-img {
+  width: 80px;
+  height: auto;
+}
+
+.footer-text {
+  font-size: 0.7rem; /* fonte menor para footer */
+  margin: 0;
+}
+
+.error {
+  color: var(--red);
+  font-weight: bold;
+  text-align: center;
 }
