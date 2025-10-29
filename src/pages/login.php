@@ -18,9 +18,10 @@ if (isset($_POST["email"])) {
   $usuario = buscarUsuario($emailInformado);
 
   if ($usuario && password_verify($senhaInformada, $usuario["senha"])) {
-    session_start();
+    if (session_status() !== PHP_SESSION_ACTIVE) session_start();
     $_SESSION['usuarioLogado'] = $usuario;
     header("Location: jogos.php");
+    exit();
   } else {
     $mensagemErro = "E-mail ou senha incorretos";
   }

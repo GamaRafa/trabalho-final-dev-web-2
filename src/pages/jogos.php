@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../core/conexao.php';
 
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+
 function getJogos() {
   $pdo = conexao();
   $sql = "SELECT * FROM jogos";
@@ -22,6 +24,12 @@ $jogos = getJogos();
   <title>Soprando o Cartucho</title>
 </head>
 <body>
+  <?php
+  if (isset($_SESSION["msgUsuarioCriado"])) {
+    echo "<script>alert('{$_SESSION["msgUsuarioCriado"]}');</script>";
+    unset($_SESSION["msgUsuarioCriado"]);
+  }
+  ?>
   <?php include_once __DIR__ . '/header.php'; ?>
   <div class="page-content">
     <ul>

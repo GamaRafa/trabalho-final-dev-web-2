@@ -53,8 +53,8 @@ CREATE TABLE itens_pedido (
 
 -- Usuários
 INSERT INTO usuarios (nome, email, senha, endereco) VALUES
-('Rafael Gama', 'rafael@fakemail.com', '123456', 'Rua A, 123'),
-('Bruna Gama', 'bruna@fakemail.com', '654321', 'Rua B, 456');
+('Rafael Gama', 'rafael@fakemail.com', '$2y$10$3rpj5znD0rF1N4PngajwT.iiSJeaXNiwr7uPQ1Lr0IYDwvdHtHdCu', 'Rua A, 123'),
+('Bruna Gama', 'bruna@fakemail.com', '$2y$10$lSbtfPlmHt1YIvOCFveelu7p.lec4FoOV22UIdFZ57YGwJNYBEC72', 'Rua B, 456');
 
 -- Jogos
 INSERT INTO jogos (nome, descricao, plataforma, preco, estoque, imagem) VALUES

@@ -12,7 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $usuario->setEndereco(trim($endereco));
 
   if ($usuario->inserir() == true) {
-    $mensagem = 'Usuário criado com sucesso';
+    if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+    $_SESSION["usuarioLogado"] = $usuario;
+    $_SESSION["msgUsuarioCriado"] = "Usuário cadastrado com sucesso!";
+    header("Location: jogos.php");
+    exit();
   } else {
     $mensagem = "Problema ao cadastrar usuário";
   }
