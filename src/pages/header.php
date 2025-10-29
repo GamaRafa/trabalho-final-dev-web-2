@@ -4,8 +4,8 @@
     <h1>Soprando o Cartucho</h1>
     <nav class="header-nav">
       <a href="jogos.php">Jogos</a>
-      <a href="#">Carrinho</a>
-      <a href="#" class="logout-link">Sair</a>
+      <a href="carrinho.php">Carrinho</a>
+      <a href="sair.php" class="logout-link">Sair</a>
     </nav>
   </div>
   <hr class="header-divider">

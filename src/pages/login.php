@@ -17,7 +17,7 @@ if (isset($_POST["email"])) {
   $senhaInformada = $_POST["senha"];
   $usuario = buscarUsuario($emailInformado);
 
-  if ($usuario && $usuario["senha"] == $senhaInformada) {
+  if ($usuario && password_verify($senhaInformada, $usuario["senha"])) {
     session_start();
     $_SESSION['usuarioLogado'] = $usuario;
     header("Location: jogos.php");
@@ -39,17 +39,26 @@ if (isset($_POST["email"])) {
   <title>Soprando o cartucho - Login</title>
 </head>
 <body>
+  <?php include_once __DIR__ . '/header-login.php' ?>
   <div class="page-content">
-    <h1>Soprando o Cartucho - Login</h1>
-    <form method="post">
-      <label for="usuario">E-mail:</label>
-      <input type="text" name="email" required>
+    <div class="form">
+      <form method="post">
+        <label for="usuario">E-mail:</label>
+        <input type="text" name="email" required>
+        <br>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required>
+        <br>
+        <button type="submit">Login</button>
+      </form>
       <br>
-      <label for="senha">Senha:</label>
-      <input type="password" name="senha" required>
-      <br>
-      <button type="submit">Login</button>
-    </form>
+      <p>Não tem uma conta?</p>
+      <a href="cadastro.php">
+        <button>Cadastre-se!</button>
+      </a>
+    </div>
+
+
 
     <?php if(!empty($mensagemErro)): ?>
     <div>

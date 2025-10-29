@@ -9,15 +9,16 @@ trait DataAccess {
     return isset($this->$name) ? $this->$name : null;
   }
 
-  public function __call($method, $args) {
-    $campo = lcfirst(substr($method, 3));
-    if (stripos($method, 'set')) {
+  public function __call($metodo, $args) {
+    $campo = lcfirst(substr($metodo, 3));
+
+    if (stripos($metodo, "set") === 0) {
       $this->$campo = $args[0];
+      return;
     }
-    if (stripos($method, 'get')) {
+    if (stripos($metodo, "get") === 0) {
       return $this->$campo;
     }
+    throw new Exception("Método indefinido");
   }
 }
-
-// precisa de revisão. Métodos mágicos não estão funcionando

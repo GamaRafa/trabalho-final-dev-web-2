@@ -18,7 +18,7 @@
   --blue: #00B4D8;
   --yellow: #FFD166;
   --dark: #2E2E2E;
-  --ligh: #F1F1F1;
+  --light: #F1F1F1;
   --text: #222;
   --card-bg: #FFFFFFCC;
 }
@@ -39,7 +39,7 @@ body {
   flex: 1;
 }
 
-form {
+.form {
   background-color: var(--ligh);
   padding: 1.5rem;
   border: 5px solid;
@@ -67,7 +67,7 @@ form button {
 }
 
 h1, h2, h3 {
-  color: var(--green);
+  color: var(--yellow);
   text-align: center;
   text-shadow: 2px 2px var(--dark);
   margin-top: 1rem;
@@ -189,9 +189,8 @@ body::after {
 /* HEADER */
 
 .header {
-  color: var(--dark);
+  background-color: var(--blue);
   padding: 0.5rem 1rem;
-  box-shadow: 0 4px 0 var(--purple);
   font-family: 'Press Start 2P', monospace;
 }
 
@@ -217,7 +216,7 @@ body::after {
 }
 
 .header-nav a:hover {
-  color: var(--green);
+  color: var(--purple);
   transform: scale(1.05);
 }
 
@@ -225,9 +224,9 @@ body::after {
   color: var(--red) !important;
 }
 
-.header-dividr {
+.header-divider {
   border: none;
-  border-top: 2px solid var(--blue);
+  border-top: 2px solid var(--light);
   margin: 0.5rem 0 0;
 }
 
@@ -237,4 +236,9 @@ body::after {
   color: var(--red);
   font-weight: bold;
   text-align: center;
+}
+
+.loginBtnsCard {
+  display: flex;
+  flex-direction: row;
 }
