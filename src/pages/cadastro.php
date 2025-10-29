@@ -31,13 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="../assets/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="../core/validarForm.js"></script>
   <title>Soprando o Cartucho - Cadastro</title>
 </head>
 <body>
   <div class="page-content">
     <h1>Cadastro de Usuário</h1>
     <div class="form">
-      <form method="post" onSubmit="return validarSenhas()">
+      <form method="post" onSubmit="return validarFormulario()" novalidate>
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome" required>
     
@@ -51,10 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="password" name="confirmar" id="confirmar" required>
     
         <label for="endereco">Endereço</label>
-        <input type="text" name="endereco" required>
+        <input type="text" name="endereco" id="endereco" required>
     
         <label>
-          <input type="checkbox" name="termos">
+          <input type="checkbox" name="termos" id="termos" required>
           Aceito os <a href="#">Termos de Uso</a>
         </label>
     
@@ -62,24 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </form>
         <br>
       <a href="login.php">
-        <button>Voltar</button>
+        <button type="button">Voltar</button>
       </a>
     </div>
   </div>
-
-  <script>
-    function validarSenhas() {
-      const senha = document.getElementById('senha').value;
-      const confirmar = document.getElementById('confirmar').value;
-
-      if (senha !== confirmar) {
-        alert('As senhas não coincidem!');
-        return false;
-      }
-      return true;
-    }
-  </script>
-
   <div>
     <p><?= $mensagem ?></p>
   </div>
@@ -87,4 +74,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </body>
 </html>
 
-<!-- essa tela ainda tem problemas a resolver, revisar DataAccess -->
+<!-- falta os campos ficarem vermelhos -->

@@ -61,6 +61,10 @@ form input[type="password"] {
   border-radius: 6px;
 }
 
+input:invalid {
+  border: 2px solid var(--red);
+}
+
 form button {
   display: block;
   margin-top: 1rem;
@@ -236,6 +240,10 @@ body::after {
   color: var(--red);
   font-weight: bold;
   text-align: center;
+}
+
+.campoInvalido {
+  border: 2px solid var(--red);
 }
 
 .loginBtnsCard {
