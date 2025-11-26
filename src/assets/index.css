@@ -40,7 +40,7 @@ body {
 }
 
 .form {
-  background-color: var(--ligh);
+  background-color: var(--light);
   padding: 1.5rem;
   border: 5px solid;
   border-image: linear-gradient(160deg, var(--purple), var(--blue)) 1;
@@ -61,9 +61,11 @@ form input[type="password"] {
   border-radius: 6px;
 }
 
-input:invalid {
-  border: 2px solid var(--red);
-}
+/* input:invalid {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+} */
 
 form button {
   display: block;
@@ -242,8 +244,20 @@ body::after {
   text-align: center;
 }
 
-.campoInvalido {
-  border: 2px solid var(--red);
+input.campoInvalido {
+  border: 2px solid var(--red) !important;
+}
+
+input[type="checkbox"].checkboxErro {
+  accent-color: var(--red);
+  transform: scale(1.05); /* aumenta levemente para chamar atenção */
+  outline: 2px solid rgba(230,57,70,0.15);
+  border-radius: 4px;
+}
+
+
+input.senhasDiferentes {
+  border: 2px solid var(--yellow) !important;
 }
 
 .loginBtnsCard {

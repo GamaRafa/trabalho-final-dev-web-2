@@ -31,14 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="../assets/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="../core/validarForm.js"></script>
   <title>Soprando o Cartucho - Cadastro</title>
 </head>
 <body>
   <div class="page-content">
     <h1>Cadastro de Usuário</h1>
     <div class="form">
-      <form method="post" onSubmit="return validarFormulario()" novalidate>
+      <form method="post" onsubmit="return validarFormulario()" novalidate>
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome" required>
     
@@ -49,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="password" name="senha" id="senha" required minlength="6">
     
         <label for="confirmar">Confirmar senha:</label>
-        <input type="password" name="confirmar" id="confirmar" required>
-    
+        <input type="password" name="confirmar" id="confirmar" required oninput="debounceValidarSenhas()">
+
         <label for="endereco">Endereço</label>
         <input type="text" name="endereco" id="endereco" required>
     
@@ -71,7 +70,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <p><?= $mensagem ?></p>
   </div>
   <?php require_once __DIR__ . '/footer.php'; ?>
+  <script>
+  let timeoutId = null;
+  const TEMPO_ESPERA = 500;
+
+  function validarFormulario() {
+    let campos = document.querySelectorAll("input[required]");
+    let valido = true;
+
+    campos.forEach(campo => {
+      console.log(campo)
+      if (!campo.value.trim()) {
+        campo.classList.add("campoInvalido");
+        valido = false;
+      } else if (campo.type === "checkbox" && !campo.checked) {
+        console.log("faltou checkbox");
+        
+        campo.classList.add("checkboxErro");
+        valido = false;
+      } else {
+        campo.classList.remove("campoInvalido");
+      }
+    });
+    if (!senhasIguais()) valido = false;
+    return valido;
+  }
+
+  function senhasIguais() {
+    const senha = document.getElementById("senha");
+    const confirmar = document.getElementById("confirmar");
+    if (senha.value !== confirmar.value) {
+      senha.classList.add("senhasDiferentes");
+      confirmar.classList.add("senhasDiferentes");
+      return false;
+    } else {
+      senha.classList.remove("senhasDiferentes");
+      confirmar.classList.remove("senhasDiferentes");
+      return true;
+    }
+  }
+
+  function debounceValidarSenhas() {
+    if (timeoutId) clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      senhasIguais();
+    }, TEMPO_ESPERA);
+  }
+  </script>
 </body>
 </html>
-
-<!-- falta os campos ficarem vermelhos -->
