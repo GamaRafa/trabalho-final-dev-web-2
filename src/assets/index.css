@@ -52,7 +52,8 @@ body {
 
 form input[type="text"],
 form input[type="email"],
-form input[type="password"] {
+form input[type="password"],
+form textarea {
   display: block;
   width: -webkit-fill-available;
   margin: 0.5rem 0 1rem 0;
@@ -60,12 +61,6 @@ form input[type="password"] {
   border: 2px solid var(--purple);
   border-radius: 6px;
 }
-
-/* input:invalid {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-} */
 
 form button {
   display: block;
@@ -206,19 +201,42 @@ body::after {
   justify-content: space-between;
   max-width: 1000px;
   margin: 0 auto;
+  gap: 1rem;
 }
 
 .header-logo {
-  width: 60px;
+  width: 50px;
   height: auto;
+}
+
+.header-content h1 {
+  /* make the title take available space but avoid pushing nav to the next line */
+  font-size: 0.95rem;
+  margin: 0;
+  text-align: center;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--yellow);
+  text-shadow: 2px 2px var(--dark);
+}
+
+.header-nav {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .header-nav a {
   color: var(--yellow);
   text-decoration: none;
-  margin: 0 0.8rem;
-  font-size: 0.7rem;
-  transition: color 0.2s, transform 0.2s
+  margin: 0;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.4rem;
+  transition: color 0.2s, transform 0.2s;
 }
 
 .header-nav a:hover {
@@ -244,7 +262,8 @@ body::after {
   text-align: center;
 }
 
-input.campoInvalido {
+input.campoInvalido,
+textarea.campoInvalido {
   border: 2px solid var(--red) !important;
 }
 

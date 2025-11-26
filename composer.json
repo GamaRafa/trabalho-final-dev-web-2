@@ -1,0 +1,18 @@
+{
+    "name": "rafael/trabalho-final-dev-web2",
+    "description": "Trabalho final da disciplina Desenvolvimento Para Web 2",
+    "require": {
+        "phpmailer/phpmailer": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rafael\\TrabalhoFinalDevWeb2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "GamaRafa",
+            "email": "rafa.gama.em7@gmail.com"
+        }
+    ]
+}

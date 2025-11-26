@@ -5,6 +5,7 @@
     <nav class="header-nav">
       <a href="jogos.php">Jogos</a>
       <a href="carrinho.php">Carrinho</a>
+      <a href="faleconosco.php">Fale conosco</a>
       <a href="sair.php" class="logout-link">Sair</a>
     </nav>
   </div>

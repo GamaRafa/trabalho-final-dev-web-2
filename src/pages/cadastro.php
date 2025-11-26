@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
         <label>
           <input type="checkbox" name="termos" id="termos" required>
-          Aceito os <a href="#">Termos de Uso</a>
+          Aceito os <a href="termos.html">Termos de Uso</a>
         </label>
     
         <button type="submit">Cadastrar</button>
