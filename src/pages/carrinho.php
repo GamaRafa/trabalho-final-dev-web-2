@@ -92,10 +92,12 @@ if (!empty($_SESSION["carrinho"])) {
       <?php endforeach; ?>
     </ul>
     <h3>Total: R$ <?= number_format($total, 2, ",", ".") ?></h3>
-    <a href="?clear=true" class="btn">Esvaziar Carrinho</a>
+    <div class="btns-carrinho">
+      <a href="?clear=true" class="esvaziar-btn">Esvaziar Carrinho</a>
+      <button type="button" onclick="window.location='comprar.php'">Comprar</button>
+    </div>
   <?php endif; ?>
   </div>
-
   <?php include_once __DIR__ . '/footer.php'; ?>
 </body>
 </html>
