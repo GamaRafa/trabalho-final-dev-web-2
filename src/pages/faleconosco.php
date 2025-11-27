@@ -1,8 +1,11 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// require the Composer autoloader using a path relative to this file
-require '../vendor/autoload.php';
+
+require '../../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+$dotenv->load();
 
 $mail = new PHPMailer(true);
 $msg = "";
@@ -16,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   try {
     $mail->isSMTP();
     $mail->SMTPAuth = true;
-    $mail->Username = 'rafa.gama.em7@gmail.com';
-    $mail->Password = 'REMOVIDO';
+    $mail->Username = $_ENV['SMTP_USER'];
+    $mail->Password = $_ENV['SMTP_PASS'];
     $mail->SMTPSecure = 'tls';
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = 587;
+    $mail->Host = $_ENV['SMTP_HOST'];
+    $mail->Port = $_ENV['SMTP_PORT'];
   
-    $mail->setFrom('rafa.gama.em7@gmail.com', "Soprando o Cartucho");
+    $mail->setFrom($_ENV['SMTP_USER'], "Soprando o Cartucho");
     $mail->addAddress($email, $nome);
     $mail->isHTML(true);
     $mail->Subject = $assunto;
