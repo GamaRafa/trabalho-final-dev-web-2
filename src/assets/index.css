@@ -283,3 +283,24 @@ input.senhasDiferentes {
   display: flex;
   flex-direction: row;
 }
+
+.quiz-header {
+  text-align: center;
+  margin: 1rem auto;
+  width: 60%;
+}
+
+.quiz-container {
+  width: 80%;
+  margin: 0 auto 2rem auto;
+  text-align: start;
+}
+
+.quiz-question {
+  background-color: var(--card-bg);
+  border: 3px solid var(--blue);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 0 var(--dark);
+}
