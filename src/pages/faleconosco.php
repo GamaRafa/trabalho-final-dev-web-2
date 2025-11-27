@@ -2,9 +2,11 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../vendor/autoload.php';
+// require '../../vendor/autoload.php';
+require '/var/www/vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+$dotenv = Dotenv\Dotenv::createImmutable('/var/www');
 $dotenv->load();
 
 $mail = new PHPMailer(true);

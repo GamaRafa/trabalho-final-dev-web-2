@@ -99,3 +99,21 @@ ou
 
 6. Para derrubar os containers **apagando** os dados do banco
 `docker compose down -v`
+
+## 📦 Árvore de diretórios DENTRO DO CONTAINER
+
+Após o docker subir, dentro do container você terá:
+
+/var/www/
+│
+├── vendor/          ← seguro, fora do docroot
+├── .env
+├── composer.json
+├── composer.lock
+└── html/            ← DocumentRoot (public)
+     ├── index.php
+     ├── assets/
+     ├── pages/
+     ├── core/
+     ├── scripts/
+     └── model/

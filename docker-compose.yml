@@ -5,12 +5,16 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./:/var/www/html
-      - ./apache.conf:/etc/apache2/conf-enabled/apache.conf
+      - ./src:/var/www/html
+      - ./vendor:/var/www/vendor
+      - ./.env:/var/www/.env
+      - ./composer.json:/var/www/composer.json
+      - ./composer.lock:/var/www/composer.lock
+      - ./apache.conf:/etc/apache2/conf-available/apache.conf
     depends_on:
       - db
     command: >
-      bash -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
+      bash -c "docker-php-ext-install pdo pdo_mysql && a2enconf apache.conf && apache2-foreground"
 
   db:
     image: mysql:5.7
