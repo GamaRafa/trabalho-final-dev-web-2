@@ -24,6 +24,7 @@ $corpo = [
                     'alternativaCorreta': 'a'
                 }]
             ```
+          Forneça apenas JSON válido, sem explicações adicionais. Use aspas duplas.
           "
         ]
       ]

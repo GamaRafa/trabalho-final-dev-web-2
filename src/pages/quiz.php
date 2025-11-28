@@ -74,7 +74,8 @@
 
         quizContainer.innerHTML = quizHTML;
       } catch (erro) {
-        quizContainer.innerHTML = `<p>Erro ao carregar perguntas: ${erro.message}</p>`;
+        quizContainer.innerHTML = `<p>Erro ao carregar perguntas. Tente novamente. </p>`;
+        console.log(erro);
       }
     }
 

@@ -15,8 +15,8 @@ $mail = new PHPMailer(true);
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 $usuario = $_SESSION["usuarioLogado"];
-$userEmail = $usuario->getEmail();
-$userName = $usuario->getNome();
+$userEmail = $usuario["email"];
+$userName = $usuario["nome"];
 $carrinho = $_SESSION["carrinho"];
 
 $itens = [];
@@ -58,20 +58,20 @@ try {
   $mail->addAddress($userEmail, $userName);
   $mail->isHTML(true);
   $mail->Subject = "Confirmação de Compra - Soprando o Cartucho";
-  $mail->Body    = nl2br("Olá $userName,<br><br>
+  $mail->Body    = "Olá $userName,<br><br>
   Sua compra foi realizada com sucesso!<br><br>
   Você comprou os seguintes jogos:<br><br>
-  " . implode(", ", array_map(function($item) {
+  " . implode("<br>", array_map(function($item) {
     return $item['nome'] . " (Quantidade: " . $item['quantidade'] . ")";
   }, $itens)) . "<br><br>
   O total da compra foi R$ " . number_format($total, 2, ",", ".") . ".<br><br>
   Em breve entraremos em contato para o envio dos seus jogos.<br><br>
   Atenciosamente,<br>
-  Equipe Soprando o Cartucho");
+  Equipe Soprando o Cartucho";
   $mail->AltBody = "Olá $userName,\n\n
   Sua compra foi realizada com sucesso!\n\n
   Você comprou os seguintes jogos:\n\n
-  " . implode(", ", array_map(function($item) {
+  " . implode("\n", array_map(function($item) {
     return $item['nome'] . " (Quantidade: " . $item['quantidade'] . ")";
   }, $itens)) . "\n\n
   O total da compra foi R$ " . number_format($total, 2, ",", ".") . ".\n\n
@@ -81,7 +81,7 @@ try {
 
   $mail->send();
   
-  header("Location: jogos.php");
+  header("Location: carrinho.php?clear=true");
   exit;
 } catch (Exception $e) {
   echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
