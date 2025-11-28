@@ -1,9 +1,8 @@
 <?php
 // require '/var/www/vendor/autoload.php';
-require __DIR__ . '/../../vendor/autoload.php';
-
+require $_SERVER["HOME"] . '/vendor/autoload.php';
 // $dotenv = Dotenv\Dotenv::createImmutable('/var/www');
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv = Dotenv\Dotenv::createImmutable($_SERVER["HOME"]);
 $dotenv->load();
 
 $assunto = "Personagens clássicos dos videogames";

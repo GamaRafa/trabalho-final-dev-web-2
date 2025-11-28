@@ -1,11 +1,25 @@
-name: Deploy via ftp
-on: push
+name: Deploy Locaweb
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Instalar Composer
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y composer
+
+    - name: Instalar dependências com Composer
+      run: composer install --no-dev --prefer-dist --no-interaction
 
     - name: Criar arquivo .env
       run: |
@@ -16,10 +30,51 @@ jobs:
         echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" >> .env
         echo "GEMINI_URL=${{ secrets.GEMINI_URL }}" >> .env
 
-    - name: FTP Deploy Locaweb
-      uses: locaweb/ftp-deploy-action@1.0.0
+    # -----------------------
+    # 1️⃣ Enviar somente public_html/
+    # -----------------------
+    - name: Upload para /public_html
+      uses: SamKirkland/FTP-Deploy-Action@v4
       with:
-        host: ${{ secrets.FTP_HOST }}
-        user: ${{ secrets.FTP_USER }}
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASS }}
-        local-dir: ./
+        local-dir: ./src
+        server-dir: public_html/src
+
+    - name: Upload index.php
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        local-dir: .
+        server-dir: public_html
+        include: |
+          index.php
+
+    # -----------------------
+    # 2️⃣ Enviar vendor/ para /home/<user>/vendor
+    # -----------------------
+    - name: Upload vendor/
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        local-dir: vendor
+        server-dir: vendor
+
+    # -----------------------
+    # 3️⃣ Enviar .env para /home/<user>/
+    # -----------------------
+    - name: Upload .env
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        local-dir: .
+        server-dir: .
+        include: |
+          .env
