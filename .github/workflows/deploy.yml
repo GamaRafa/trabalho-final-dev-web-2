@@ -34,7 +34,7 @@ jobs:
     # 1️⃣ Enviar somente public_html/
     # -----------------------
     - name: Upload para /public_html
-      uses: SamKirkland/FTP-Deploy-Action@v4
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USER }}
