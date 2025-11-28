@@ -91,7 +91,7 @@ ou
 `http://localhost:8080`
 
 4. Popular o banco de dados
-`docker exec -i mysql_db mysql -uuser -ppass soprando_cartucho < ./src/scripts/init.sql`
+`docker exec -i mysql_db mysql -uuser -ppass sopra_cartucho < ./src/scripts/init.sql`
 - Obs.: para acessar o banco de dados do container: `docker exec -it mysql_db mysql -u user -p`
 
 5. Para derrubar os containers sem apagar os dados do banco

@@ -4,11 +4,13 @@ require_once '../core/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/var/www/vendor/autoload.php';
+// require '/var/www/vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 $pdo = conexao();
 
-$dotenv = Dotenv\Dotenv::createImmutable('/var/www');
+// $dotenv = Dotenv\Dotenv::createImmutable('/var/www');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
 $mail = new PHPMailer(true);

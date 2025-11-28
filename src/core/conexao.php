@@ -1,9 +1,9 @@
 <?php
 
 function conexao() {
-  $dsn = "mysql:host=db;dbname=soprando_cartucho;charset=utf8";
+  $dsn = "mysql:host=db;dbname=sopra_cartucho;charset=utf8";
   $usuario = "user";
-  $senha = "pass";
+  $senha = "SopraCart123#";
 
   try {
     $pdo = new PDO($dsn, $usuario, $senha);

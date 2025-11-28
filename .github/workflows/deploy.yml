@@ -1,0 +1,25 @@
+name: Deploy via ftp
+on: push
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Criar arquivo .env
+      run: |
+        echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> .env
+        echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> .env
+        echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
+        echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> .env
+        echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" >> .env
+        echo "GEMINI_URL=${{ secrets.GEMINI_URL }}" >> .env
+
+    - name: FTP Deploy Locaweb
+      uses: locaweb/ftp-deploy-action@1.0.0
+      with:
+        host: ${{ secrets.FTP_HOST }}
+        user: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        local-dir: ./
